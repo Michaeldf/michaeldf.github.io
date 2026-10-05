@@ -1,0 +1,32 @@
+---
+import '../styles/global.css';
+const { title, active } = Astro.props;
+const links = [['/', 'Work'], ['/about/', 'About'], ['/cv/', 'CV']];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Portfolio of Michael: work, about me and CV." />
+    <title>{title} | Michael</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a class="brand" href="/">Michael</a>
+        <ul>
+          {links.map(([href, label]) => <li><a href={href} class={active === href ? 'active' : ''}>{label}</a></li>)}
+        </ul>
+      </nav>
+    </header>
+    <main><slot /></main>
+    <footer>&copy; {new Date().getFullYear()} Michael · <a href="https://github.com/Michaeldf">GitHub</a></footer>
+    <script>
+      const io = new IntersectionObserver((es) => es.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      }), { threshold: 0.15 });
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>
