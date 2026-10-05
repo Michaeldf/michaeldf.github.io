@@ -1,49 +1,65 @@
 ---
 import '../styles/global.css';
-const { title, active } = Astro.props;
-const links = [['/', 'Work'], ['/about/', 'About'], ['/cv/', 'CV'], ['https://github.com/Michaeldf?tab=repositories', 'GitHub repos', 'external']];
+interface Props { title: string; active: string; home?: boolean; }
+const { title, active, home = false } = Astro.props;
+const links = [['/', 'Work'], ['/about/', 'About'], ['/cv/', 'CV']];
 ---
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Portfolio of Michael: work, about me and CV." />
+    <meta name="description" content="Michael’s personal corner of the internet. Explore independent projects, ongoing experiments, and ideas taking shape." />
+    <meta name="theme-color" content="#111018" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <title>{title} | Michael</title>
   </head>
   <body>
-    <div class="world-scene" aria-hidden="true">
-      <div class="sun-rays"></div>
-      <div class="sun"></div>
-      <div class="cloud cloud-one"></div>
-      <div class="cloud cloud-two"></div>
-      <div class="far-hills"></div>
-      <div class="forest"><span></span><span></span><span></span><span></span><span></span></div>
-      <div class="water"><div class="water-reflection"></div></div>
-      <div class="voxel-ground"><div class="grass-line"></div></div>
+    <div id="portfolio">
+      <div class="mp night">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <header>
+          <a class="brand" href="/" aria-label="Michael home">michael<span aria-hidden="true">↗</span></a>
+          <nav aria-label="Portfolio">
+            {links.map(([href, label]) => (
+              <a href={href} class:list={[active === href && 'selected']} aria-current={active === href ? 'page' : undefined}>{label}{label === 'CV' && <span aria-hidden="true"> ↗</span>}</a>
+            ))}
+          </nav>
+        </header>
+        <main id="main" class:list={[!home && 'inner-page']}><slot /></main>
+        <footer><span>&copy; {new Date().getFullYear()} Michael</span><span>Always a work in progress.</span><a href="https://github.com/Michaeldf">GitHub ↗</a></footer>
+      </div>
     </div>
-    <header>
-      <nav>
-        <a class="brand" href="/">Michael</a>
-        <ul>
-          {links.map(([href, label, external]) => (
-            <li><a
-              href={href}
-              class:list={[active === href && 'active', external && 'btn']}
-              target={external ? '_blank' : undefined}
-              rel={external ? 'noopener noreferrer' : undefined}
-            >{label}</a></li>
-          ))}
-        </ul>
-      </nav>
-    </header>
-    <main><slot /></main>
-    <footer>&copy; {new Date().getFullYear()} Michael · <a href="https://github.com/Michaeldf?tab=repositories">GitHub repositories</a></footer>
     <script>
-      const io = new IntersectionObserver((es) => es.forEach((e) => {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      }), { threshold: 0.15 });
-      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+      const page = document.querySelector<HTMLElement>('#portfolio .mp');
+      const motion = page?.querySelector<HTMLButtonElement>('.motion');
+      const world = page?.querySelector<HTMLElement>('.world');
+      if (page && motion && world) {
+        const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+        let playing = !preference.matches;
+        const render = () => {
+          page.classList.toggle('paused', !playing);
+          page.classList.toggle('motion-enabled', playing);
+          motion.textContent = playing ? 'Pause motion  Ⅱ' : 'Play motion  ▷';
+          motion.setAttribute('aria-label', playing ? 'Pause ambient motion' : 'Play ambient motion');
+          motion.setAttribute('aria-pressed', String(playing));
+        };
+        motion.hidden = false;
+        render();
+        motion.addEventListener('click', () => { playing = !playing; render(); });
+        preference.addEventListener('change', () => { playing = !preference.matches; render(); });
+        let visible = true;
+        const updateVisibility = () => page.classList.toggle('offscreen', !visible || document.hidden);
+        const observer = new IntersectionObserver(([entry]) => {
+          visible = entry.isIntersecting;
+          updateVisibility();
+        });
+        observer.observe(world);
+        document.addEventListener('visibilitychange', updateVisibility);
+      }
     </script>
   </body>
 </html>
