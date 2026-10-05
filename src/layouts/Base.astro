@@ -18,7 +18,8 @@ const links = [['/', 'Work'], ['/about/', 'About'], ['/cv/', 'CV'], ['https://gi
       <div class="cloud cloud-one"></div>
       <div class="cloud cloud-two"></div>
       <div class="far-hills"></div>
-      <div class="water"></div>
+      <div class="forest"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="water"><div class="water-reflection"></div></div>
       <div class="voxel-ground"><div class="grass-line"></div></div>
     </div>
     <header>
@@ -37,7 +38,7 @@ const links = [['/', 'Work'], ['/about/', 'About'], ['/cv/', 'CV'], ['https://gi
       </nav>
     </header>
     <main><slot /></main>
-    <footer>&copy; {new Date().getFullYear()} Michael · <a href="https://github.com/Michaeldf">GitHub</a></footer>
+    <footer>&copy; {new Date().getFullYear()} Michael · <a href="https://github.com/Michaeldf?tab=repositories">GitHub repositories</a></footer>
     <script>
       const io = new IntersectionObserver((es) => es.forEach((e) => {
         if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
