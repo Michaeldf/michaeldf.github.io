@@ -1,0 +1,62 @@
+{
+  "updatedOn": "2026-10-05",
+  "intro": "Singleplayer comes first. Scope and order may evolve as the game takes shape; this is a direction, not a release schedule.",
+  "milestones": [
+    {
+      "status": "starting-point",
+      "title": "The inn prototype",
+      "description": "A small inn with connected rooms, characters, conversations, and everyday tasks. Establish the foundations of inhabiting the world as an individual.",
+      "updatedOn": null
+    },
+    {
+      "status": "planned",
+      "title": "Everyday livelihoods",
+      "description": "Expand toward farming, trade, running a household, and relationships. Give ordinary work and local affairs a place in the wider world.",
+      "updatedOn": null
+    },
+    {
+      "status": "longer-term",
+      "title": "Households, dynasties & power",
+      "description": "Connect personal progression with inheritance, conflict, and political ambition, so decisions and relationships can have lasting consequences.",
+      "updatedOn": null
+    },
+    {
+      "status": "exploring",
+      "title": "A more responsive world",
+      "description": "Explore more sophisticated AI-controlled characters and, later, multiplayer. Singleplayer comes first.",
+      "updatedOn": null
+    }
+  ],
+  "features": [
+    {
+      "title": "Life at a human scale",
+      "description": "Inhabit a 2D medieval world as one person, beginning with conversations and everyday tasks."
+    },
+    {
+      "title": "Work & livelihoods",
+      "description": "Farming, trade, and household life as paths through the world."
+    },
+    {
+      "title": "Relationships that matter",
+      "description": "Characters, households, and local affairs connected through lasting consequences."
+    },
+    {
+      "title": "Generations & inheritance",
+      "description": "A longer-term ambition to connect individual lives with dynasties."
+    },
+    {
+      "title": "A path to power",
+      "description": "Personal progression into conflict, political affairs, and positions of influence."
+    },
+    {
+      "title": "A grounded fictional setting",
+      "description": "An original world with societies and systems informed by historical research."
+    }
+  ],
+  "updates": [
+    {
+      "date": "2026-10-05",
+      "text": "Published the initial roadmap, from the inn prototype to the longer-term vision."
+    }
+  ]
+}

@@ -95,3 +95,27 @@
 #portfolio .feature-grid dt{font:500 18px/1.4 'Manrope',sans-serif;color:var(--ink)}
 #portfolio .feature-grid dd{font-size:14px;line-height:1.75;color:var(--sub);margin:10px 0 0}
 @media(max-width:600px){#portfolio .feature-grid{grid-template-columns:1fr;gap:20px}#portfolio .roadmap-list li{grid-template-columns:36px 1fr;gap:14px}#portfolio .roadmap-number{width:36px;height:36px}#portfolio .roadmap-list li:not(:last-child)::before{left:17px;top:42px}#portfolio .roadmap-list h3{font-size:20px}}
+
+#portfolio .game-project-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:38px;align-items:start;margin-top:28px}
+#portfolio .game-article{min-width:0}
+#portfolio .game-article .project-figure{margin:0 0 32px}
+#portfolio .game-article .game-plans,#portfolio .game-article .project-notes{max-width:none}
+#portfolio .roadmap-sidebar{min-width:0;padding:24px 20px;background:#17131f;border:1px solid var(--line);border-radius:6px;scroll-margin-top:24px}
+#portfolio .roadmap-sidebar h2{font-size:27px;margin:8px 0 12px}
+#portfolio .roadmap-sidebar .roadmap-updated{font-size:11px;color:var(--accent);margin:0 0 16px}
+#portfolio .roadmap-sidebar .roadmap-intro{font-size:12px;line-height:1.75;margin:0 0 24px}
+#portfolio .roadmap-sidebar .roadmap-list li{grid-template-columns:28px 1fr;gap:12px;padding-bottom:26px}
+#portfolio .roadmap-sidebar .roadmap-list li:last-child{padding-bottom:0}
+#portfolio .roadmap-sidebar .roadmap-number{width:28px;height:28px;font-size:10px}
+#portfolio .roadmap-sidebar .roadmap-list li:not(:last-child)::before{left:13px;top:35px;bottom:7px}
+#portfolio .roadmap-sidebar .roadmap-stage{font-size:9px;letter-spacing:.65px}
+#portfolio .roadmap-sidebar .roadmap-list h3{font-size:17px;margin:6px 0 8px}
+#portfolio .roadmap-sidebar .roadmap-list p{font-size:12px;line-height:1.75;margin:0}
+#portfolio .roadmap-sidebar .roadmap-list .milestone-date{font-size:10px;color:var(--accent);margin-top:9px}
+#portfolio .roadmap-updates{border-top:1px solid var(--line);padding-top:20px;margin-top:24px}
+#portfolio .roadmap-updates h3{font:500 16px/1.4 'Manrope',sans-serif}
+#portfolio .roadmap-updates ul{list-style:none;padding:0;margin:16px 0 0}
+#portfolio .roadmap-updates li+li{margin-top:18px}
+#portfolio .roadmap-updates time{font-size:10px;color:var(--accent)}
+#portfolio .roadmap-updates p{font-size:12px;line-height:1.75;margin:7px 0 0}
+@media(max-width:850px){#portfolio .game-project-layout{grid-template-columns:1fr;gap:32px}#portfolio .roadmap-sidebar{max-width:740px}#portfolio .game-article{max-width:740px}}
