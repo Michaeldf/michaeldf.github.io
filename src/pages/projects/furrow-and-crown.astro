@@ -1,5 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
+import NoteList from '../../components/NoteList.astro';
+import { notes } from '../../data/notes';
 ---
 <Base title="Furrow and Crown" active="/">
   <section class="project-detail reveal">
@@ -12,5 +14,9 @@ import Base from '../../layouts/Base.astro';
     <p>The setting is an original fictional world, with societies and systems grounded in historical research. The ambition is a world where relationships, livelihoods, and decisions have lasting consequences.</p>
     <p>Development starts small: a prototype set in an inn, with connected rooms, characters, conversations, and everyday tasks. Singleplayer comes first. Multiplayer and more sophisticated AI-controlled characters are longer-term goals.</p>
     <p>The project is in early development; this describes the direction I’m building toward.</p>
+  </section>
+  <section class="project-notes">
+    <h2>Notes on this project</h2>
+    <NoteList notes={notes.filter(note => note.project === 'furrow-and-crown')} />
   </section>
 </Base>

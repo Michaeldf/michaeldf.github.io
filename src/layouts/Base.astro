@@ -2,7 +2,7 @@
 import '../styles/global.css';
 interface Props { title: string; active: string; home?: boolean; }
 const { title, active, home = false } = Astro.props;
-const links = [['/', 'Work'], ['/about/', 'About'], ['/cv/', 'CV']];
+const links = [['/', 'Work'], ['/notes/', 'Notes'], ['/about/', 'About'], ['/contact/', 'Contact']];
 ---
 <!doctype html>
 <html lang="en">
@@ -25,7 +25,7 @@ const links = [['/', 'Work'], ['/about/', 'About'], ['/cv/', 'CV']];
           <a class="brand" href="/" aria-label="Michael home">michael<span aria-hidden="true">↗</span></a>
           <nav aria-label="Portfolio">
             {links.map(([href, label]) => (
-              <a href={href} class:list={[active === href && 'selected']} aria-current={active === href ? 'page' : undefined}>{label}{label === 'CV' && <span aria-hidden="true"> ↗</span>}</a>
+              <a href={href} class:list={[active === href && 'selected']} aria-current={active === href ? 'page' : undefined}>{label}</a>
             ))}
           </nav>
         </header>

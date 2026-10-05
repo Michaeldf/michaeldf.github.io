@@ -1,6 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 import Landscape from '../components/Landscape.astro';
+import NoteList from '../components/NoteList.astro';
+import { notes } from '../data/notes';
 ---
 <Base title="Work" active="/" home>
 <div class="night-hero">
@@ -13,5 +15,6 @@ import Landscape from '../components/Landscape.astro';
 <a class="project" href="/projects/ttlabs/"><div class="project-art lab-art"><div class="mini-browser"><div class="mini-top"><span>● ● ●</span><span>ttlabs.no ↗</span></div><div class="lab-body"><span class="tiny">TTL / LABS</span><div class="lab-title">A space<br>for what’s next.</div><div class="lab-lines"><b></b><b></b><b></b></div><span class="tiny">EXPLORE THE PROJECT →</span></div></div><span class="art-index">01</span></div><div class="project-info"><div><span class="project-tag"><span class="dot"></span> LIVE WEBSITE</span><h3>ttlabs.no</h3></div><span class="project-arrow">↗</span></div><p>Clearer data and practical comparisons for table-tennis rubbers and blades.</p></a>
 <a class="project" href="/projects/furrow-and-crown/"><div class="project-art crown-art"><div class="furrows"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fc-word">Furrow<br><em>& Crown</em></div><span class="art-index">02</span><span class="crown-caption">TAKING ROOT.</span></div><div class="project-info"><div><span class="project-tag">IN DEVELOPMENT · PRIVATE</span><h3>Furrow and Crown</h3></div><span class="project-arrow">↗</span></div><p>A medieval life simulation connecting ordinary livelihoods with households, dynasties, and power.</p></a>
 </div></div>
+<section class="home-notes"><div class="section-head"><h2>From the notebook</h2><a href="/notes/">All notes ↗</a></div><NoteList notes={notes.slice(0, 2)} /></section>
 <div class="about-section" id="about"><span class="eyebrow">BEHIND THE PROJECTS</span><h2>Curiosity is the starting point.<br> Building is how I follow it.</h2><a href="/about/">More about me ↗</a></div>
 </Base>

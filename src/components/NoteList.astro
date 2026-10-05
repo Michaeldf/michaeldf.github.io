@@ -1,0 +1,14 @@
+---
+import type { Note } from '../data/notes';
+interface Props { notes: Note[]; }
+const { notes } = Astro.props;
+---
+<div class="note-list">
+  {notes.map(note => (
+    <a class="note-row" href={`/notes/${note.slug}/`}>
+      <div class="note-meta"><span>{note.projectName}</span><time datetime={note.published}>{note.displayDate}</time></div>
+      <div class="note-row-title"><h3>{note.title}</h3><span aria-hidden="true">↗</span></div>
+      <p>{note.excerpt}</p>
+    </a>
+  ))}
+</div>

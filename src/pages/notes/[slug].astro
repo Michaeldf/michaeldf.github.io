@@ -1,0 +1,18 @@
+---
+import Base from '../../layouts/Base.astro';
+import { notes, type Note } from '../../data/notes';
+export function getStaticPaths() {
+  return notes.map(note => ({ params: { slug: note.slug }, props: { note } }));
+}
+interface Props { note: Note; }
+const { note } = Astro.props;
+---
+<Base title={note.title} active="/notes/">
+  <article class="note-article">
+    <a class="back-link" href="/notes/">← All notes</a>
+    <div class="note-meta"><a href={note.projectHref}>{note.projectName}</a><time datetime={note.published}>{note.displayDate}</time><span>Introduction</span></div>
+    <h1>{note.title}</h1>
+    {note.paragraphs.map(paragraph => <p>{paragraph}</p>)}
+    <div class="note-end"><a href={note.projectHref}>Explore {note.projectName} →</a><a href="/contact/">Get in touch ↗</a></div>
+  </article>
+</Base>
