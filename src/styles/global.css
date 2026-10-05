@@ -31,6 +31,9 @@ nav ul a{color:var(--muted);text-decoration:none;position:relative;transition:co
 nav ul a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:linear-gradient(90deg,var(--a),var(--b));transition:width .3s}
 nav ul a:hover,nav ul a.active{color:var(--text)}
 nav ul a:hover::after,nav ul a.active::after{width:100%}
+nav ul a.github-nav-btn{padding:.45rem .85rem;border:1px solid #d8b4fe66;border-radius:999px;background:linear-gradient(135deg,#a855f744,#d8b4fe22);color:var(--text);font-size:.9rem;white-space:nowrap}
+nav ul a.github-nav-btn::after{display:none}
+nav ul a.github-nav-btn:hover{border-color:var(--b);box-shadow:0 0 18px #a855f755;color:#fff}
 main{position:relative;z-index:1;max-width:960px;margin:auto;padding:2rem 1rem 4rem}
 .hero{text-align:center;padding:5rem 0 3rem}
 .hero h1{font-size:clamp(2.4rem,7vw,4.2rem);margin:.2rem 0;line-height:1.1}

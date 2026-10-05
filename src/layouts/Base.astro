@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 const { title, active } = Astro.props;
-const links = [['/', 'Work'], ['/about/', 'About'], ['/cv/', 'CV']];
+const links = [['/', 'Work'], ['/about/', 'About'], ['/cv/', 'CV'], ['https://github.com/Michaeldf?tab=repositories', 'GitHub repos', 'external']];
 ---
 <!doctype html>
 <html lang="en">
@@ -25,7 +25,14 @@ const links = [['/', 'Work'], ['/about/', 'About'], ['/cv/', 'CV']];
       <nav>
         <a class="brand" href="/">Michael</a>
         <ul>
-          {links.map(([href, label]) => <li><a href={href} class={active === href ? 'active' : ''}>{label}</a></li>)}
+          {links.map(([href, label, external]) => (
+            <li><a
+              href={href}
+              class:list={[active === href && 'active', external && 'github-nav-btn']}
+              target={external ? '_blank' : undefined}
+              rel={external ? 'noopener noreferrer' : undefined}
+            >{label}</a></li>
+          ))}
         </ul>
       </nav>
     </header>
