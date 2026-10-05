@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import { contact } from '../data/contact';
+---
+<Base title="Contact" active="/contact/">
+  <section class="content-panel contact-page">
+    <span class="eyebrow">GET IN TOUCH</span>
+    <h1>Let’s talk<br>about ideas.</h1>
+    <p>Questions about a project, feedback, or an idea you’d like to share? I’d like to hear from you.</p>
+    <div class="contact-links">
+      {contact.email && <a class="contact-link" href={`mailto:${contact.email}`}><span>Email</span><strong>{contact.email}</strong><span aria-hidden="true">↗</span></a>}
+      <a class="contact-link" href={contact.github}><span>GitHub</span><strong>@Michaeldf</strong><span aria-hidden="true">↗</span></a>
+    </div>
+    <p>Find my projects and public discussions on GitHub.</p>
+  </section>
+</Base>

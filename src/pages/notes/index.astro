@@ -1,0 +1,13 @@
+---
+import Base from '../../layouts/Base.astro';
+import NoteList from '../../components/NoteList.astro';
+import { notes } from '../../data/notes';
+---
+<Base title="Notes" active="/notes/">
+  <section class="journal">
+    <span class="eyebrow">THE BUILDING JOURNAL</span>
+    <h1>Notes from<br>the workbench.</h1>
+    <p class="journal-intro">Ideas, decisions, and the stories behind my projects.</p>
+    <NoteList notes={notes} />
+  </section>
+</Base>

@@ -1,5 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
+import NoteList from '../../components/NoteList.astro';
+import { notes } from '../../data/notes';
 ---
 <Base title="ttlabs.no" active="/">
   <section class="project-detail reveal">
@@ -12,5 +14,9 @@ import Base from '../../layouts/Base.astro';
     <p>My vision is to make those differences clearer through a consistent, evidence-based comparison framework. Original manufacturer information should remain visible, missing data should be acknowledged, and comparisons should explain their limits.</p>
     <p>Ultimately, I want ttlabs.no to help players understand the trade-offs, narrow their options, and choose equipment with more confidence.</p>
     <a class="btn" href="https://ttlabs.no/" target="_blank" rel="noopener noreferrer">Visit ttlabs.no ↗</a>
+  </section>
+  <section class="project-notes">
+    <h2>Notes on this project</h2>
+    <NoteList notes={notes.filter(note => note.project === 'ttlabs')} />
   </section>
 </Base>
