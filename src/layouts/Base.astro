@@ -28,7 +28,7 @@ const links = [['/', 'Work'], ['/about/', 'About'], ['/cv/', 'CV'], ['https://gi
           {links.map(([href, label, external]) => (
             <li><a
               href={href}
-              class:list={[active === href && 'active', external && 'github-nav-btn']}
+              class:list={[active === href && 'active', external && 'btn']}
               target={external ? '_blank' : undefined}
               rel={external ? 'noopener noreferrer' : undefined}
             >{label}</a></li>

@@ -29,14 +29,14 @@ const projects = [
   <h2 class="reveal">Current projects</h2>
   <div class="grid">
     {projects.map((p, i) => (
-      <article class="card reveal" style={`--d:${i * 0.12}s`}>
+      <a class="card project-card reveal" style={`--d:${i * 0.12}s`} href={p.href}>
         <div class="project-heading">
-          <h3><a class="project-link" href={p.href}>{p.name}</a></h3>
+          <h3>{p.name}</h3>
           <span class:list={['status', `status-${p.statusType}`]}>{p.status}</span>
         </div>
         <p>{p.description}</p>
-        <p><a href={p.href}>Learn more →</a></p>
-      </article>
+        <span class="project-more">Learn more →</span>
+      </a>
     ))}
   </div>
 </Base>
