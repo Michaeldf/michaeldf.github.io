@@ -77,3 +77,21 @@
 #portfolio .project-figure{margin:28px 0 36px}
 #portfolio .project-figure img{display:block;width:100%;height:auto;border-radius:5px}
 #portfolio .project-figure figcaption{margin-top:12px;color:var(--sub);font-size:12px;line-height:1.6}
+
+#portfolio .game-plans{max-width:740px;margin:48px 0;padding-top:32px;border-top:1px solid var(--line)}
+#portfolio .game-plans h2{margin:12px 0 16px}
+#portfolio .game-plans .plans-intro{font-size:14px;margin:0 0 28px}
+#portfolio .roadmap-list{list-style:none;padding:0;margin:0}
+#portfolio .roadmap-list li{display:grid;grid-template-columns:48px 1fr;gap:20px;position:relative;padding:0 0 32px}
+#portfolio .roadmap-list li:last-child{padding-bottom:0}
+#portfolio .roadmap-list li:not(:last-child)::before{content:"";position:absolute;left:23px;top:48px;bottom:8px;border-left:1px solid var(--line)}
+#portfolio .roadmap-number{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border:1px solid var(--line);border-radius:50%;color:var(--accent);font-size:12px;background:#17131f}
+#portfolio .roadmap-stage{font-size:10px;letter-spacing:1.2px;color:var(--sub)}
+#portfolio .roadmap-stage.current-focus{color:#a3cfb9}
+#portfolio .roadmap-list h3{font:500 22px/1.35 'Manrope',sans-serif;margin:7px 0 10px;letter-spacing:-.4px}
+#portfolio .roadmap-list p{font-size:14px;margin:0;line-height:1.75}
+#portfolio .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px 28px;margin:0}
+#portfolio .feature-grid>div{padding-top:18px;border-top:1px solid var(--line)}
+#portfolio .feature-grid dt{font:500 18px/1.4 'Manrope',sans-serif;color:var(--ink)}
+#portfolio .feature-grid dd{font-size:14px;line-height:1.75;color:var(--sub);margin:10px 0 0}
+@media(max-width:600px){#portfolio .feature-grid{grid-template-columns:1fr;gap:20px}#portfolio .roadmap-list li{grid-template-columns:36px 1fr;gap:14px}#portfolio .roadmap-number{width:36px;height:36px}#portfolio .roadmap-list li:not(:last-child)::before{left:17px;top:42px}#portfolio .roadmap-list h3{font-size:20px}}
