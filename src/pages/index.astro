@@ -3,14 +3,17 @@ import Base from '../layouts/Base.astro';
 const projects = [
   {
     name: 'TTLabs.no',
-    description: 'My live project website. Visit the site to see what I’m working on there.',
+    description: 'My live project website. Find out more about it and see what I’m building.',
     status: 'Live',
-    href: 'https://ttlabs.no/',
+    statusType: 'live',
+    href: '/projects/ttlabs/',
   },
   {
     name: 'Furrow and Crown',
-    description: 'A private project in the very early stages of development. I’ll share more as it takes shape.',
+    description: 'A private project in its early stages. I’ll share more as it takes shape.',
     status: 'Early development · Private',
+    statusType: 'private',
+    href: '/projects/furrow-and-crown/',
   },
 ];
 ---
@@ -28,11 +31,11 @@ const projects = [
     {projects.map((p, i) => (
       <article class="card reveal" style={`--d:${i * 0.12}s`}>
         <div class="project-heading">
-          <h3>{p.name}</h3>
-          <span class:list={['status', p.href ? 'status-live' : 'status-private']}>{p.status}</span>
+          <h3><a class="project-link" href={p.href}>{p.name}</a></h3>
+          <span class:list={['status', `status-${p.statusType}`]}>{p.status}</span>
         </div>
         <p>{p.description}</p>
-        {p.href && <p><a href={p.href} target="_blank" rel="noopener noreferrer">Visit TTLabs.no ↗</a></p>}
+        <p><a href={p.href}>Learn more →</a></p>
       </article>
     ))}
   </div>
