@@ -1,13 +1,21 @@
-:root{--bg:#0b1020;--card:#131a33;--text:#e6e9f5;--muted:#9aa3c7;--a:#7c5cff;--b:#22d3ee}
+:root{--bg:#080610;--card:#151020;--text:#f2edff;--muted:#b2a7ca;--a:#a855f7;--b:#d8b4fe}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
-body::before,body::after{content:"";position:fixed;width:50vmax;height:50vmax;border-radius:50%;filter:blur(90px);opacity:.25;z-index:-1;animation:float 18s ease-in-out infinite alternate}
-body::before{background:var(--a);top:-20vmax;left:-15vmax}
-body::after{background:var(--b);bottom:-25vmax;right:-15vmax;animation-delay:-9s}
-@keyframes float{to{transform:translate(8vmax,6vmax) scale(1.15)}}
+.world-scene{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:linear-gradient(180deg,#100b20 0%,#1b1030 48%,#281637 75%,#17101d 100%)}
+.world-scene::before{content:"";position:absolute;inset:0;background-image:radial-gradient(2px 2px at 8% 18%,#fff 45%,transparent 55%),radial-gradient(2px 2px at 22% 39%,#e9d8ff 45%,transparent 55%),radial-gradient(1px 1px at 38% 12%,#fff 45%,transparent 55%),radial-gradient(2px 2px at 52% 28%,#e9d8ff 45%,transparent 55%),radial-gradient(1px 1px at 68% 17%,#fff 45%,transparent 55%),radial-gradient(2px 2px at 82% 34%,#e9d8ff 45%,transparent 55%),radial-gradient(1px 1px at 94% 12%,#fff 45%,transparent 55%);opacity:.7;animation:twinkle 5s ease-in-out infinite alternate}
+.moon{position:absolute;top:13%;right:17%;width:52px;height:52px;border-radius:50%;background:#eee4ff;box-shadow:0 0 22px #d8b4fe,0 0 70px #a855f766}
+.cloud{position:absolute;width:96px;height:24px;background:#594174;box-shadow:24px -18px 0 -5px #594174,54px -9px 0 #594174,78px 4px 0 -3px #594174;opacity:.62;animation:drift 42s linear infinite}
+.cloud-one{top:25%;left:-150px}
+.cloud-two{top:39%;left:-260px;transform:scale(.7);animation-delay:-21s;animation-duration:56s;opacity:.4}
+.far-hills{position:absolute;right:0;bottom:12vh;left:0;height:24vh;background:#21142f;clip-path:polygon(0 58%,9% 58%,9% 37%,17% 37%,17% 53%,29% 53%,29% 24%,37% 24%,37% 44%,49% 44%,49% 12%,58% 12%,58% 40%,72% 40%,72% 25%,81% 25%,81% 48%,91% 48%,91% 32%,100% 32%,100% 100%,0 100%);opacity:.88}
+.voxel-ground{position:absolute;right:0;bottom:0;left:0;height:23vh;min-height:120px;background-color:#493024;background-image:linear-gradient(90deg,#0002 1px,transparent 1px),linear-gradient(#0002 1px,transparent 1px),linear-gradient(135deg,#75503b66 25%,transparent 25%,transparent 75%,#271b2166 75%);background-size:48px 48px,48px 48px,96px 96px;clip-path:polygon(0 17%,12% 17%,12% 7%,26% 7%,26% 17%,40% 17%,40% 0,55% 0,55% 12%,69% 12%,69% 5%,84% 5%,84% 17%,100% 17%,100% 100%,0 100%);animation:ground-shift 18s ease-in-out infinite alternate}
+.grass-line{position:absolute;inset:0 0 auto;height:12px;background:#93718a;box-shadow:0 5px 0 #644638}
+@keyframes twinkle{to{opacity:.35}}
+@keyframes drift{to{transform:translateX(calc(100vw + 420px))}}
+@keyframes ground-shift{to{filter:brightness(1.12)}}
 a{color:var(--b)}
-header{position:sticky;top:0;backdrop-filter:blur(12px);background:rgba(11,16,32,.6);border-bottom:1px solid rgba(255,255,255,.08);z-index:10}
+header{position:sticky;top:0;backdrop-filter:blur(12px);background:rgba(8,6,16,.7);border-bottom:1px solid rgba(255,255,255,.08);z-index:10}
 nav{max-width:960px;margin:auto;padding:1rem;display:flex;justify-content:space-between;align-items:center}
 .brand{font-weight:800;color:var(--text);text-decoration:none;font-size:1.1rem}
 nav ul{list-style:none;display:flex;gap:1.4rem;margin:0;padding:0}
@@ -15,7 +23,7 @@ nav ul a{color:var(--muted);text-decoration:none;position:relative;transition:co
 nav ul a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:linear-gradient(90deg,var(--a),var(--b));transition:width .3s}
 nav ul a:hover,nav ul a.active{color:var(--text)}
 nav ul a:hover::after,nav ul a.active::after{width:100%}
-main{max-width:960px;margin:auto;padding:2rem 1rem 4rem}
+main{position:relative;z-index:1;max-width:960px;margin:auto;padding:2rem 1rem 4rem}
 .hero{text-align:center;padding:5rem 0 3rem}
 .hero h1{font-size:clamp(2.4rem,7vw,4.2rem);margin:.2rem 0;line-height:1.1}
 .grad{background:linear-gradient(90deg,var(--a),var(--b),var(--a));background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s linear infinite}
@@ -26,15 +34,20 @@ main{max-width:960px;margin:auto;padding:2rem 1rem 4rem}
 .btn.alt{background:transparent;border:1px solid var(--a);color:var(--text)}
 h2{font-size:1.8rem;margin:3rem 0 1rem}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
-.card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:1.4rem;transition:transform .3s,border-color .3s,box-shadow .3s}
+.card{background:rgba(21,16,32,.9);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:1.4rem;transition:transform .3s,border-color .3s,box-shadow .3s}
 .card:hover{transform:translateY(-6px);border-color:var(--a);box-shadow:0 14px 35px rgba(124,92,255,.25)}
 .card h3{margin-top:0}
+.project-heading{display:flex;align-items:center;justify-content:space-between;gap:.75rem}
+.project-heading h3{margin:0}
+.status{display:inline-block;border-radius:99px;padding:.2rem .65rem;font-size:.72rem;line-height:1.5;white-space:nowrap}
+.status-live{background:#174a38;color:#a7f3d0}
+.status-private{background:rgba(168,85,247,.2);color:#e9d5ff}
 .tag{display:inline-block;background:rgba(124,92,255,.18);color:#c9bfff;border-radius:99px;padding:.1rem .8rem;font-size:.8rem;margin:.15rem}
 .timeline{border-left:2px solid rgba(124,92,255,.5);padding-left:1.4rem;margin-left:.4rem}
 .job{margin-bottom:1.6rem;position:relative}
 .job::before{content:"";position:absolute;left:-1.95rem;top:.5rem;width:12px;height:12px;border-radius:50%;background:var(--b)}
 .meta{color:var(--muted);font-size:.9rem}
-footer{text-align:center;color:var(--muted);padding:2rem 1rem;font-size:.9rem}
+footer{position:relative;z-index:1;text-align:center;color:var(--muted);padding:2rem 1rem;font-size:.9rem}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;transition-delay:var(--d,0s)}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
