@@ -2,17 +2,25 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
-.world-scene{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:linear-gradient(180deg,#100b20 0%,#1b1030 48%,#281637 75%,#17101d 100%)}
-.world-scene::before{content:"";position:absolute;inset:0;background-image:radial-gradient(2px 2px at 8% 18%,#fff 45%,transparent 55%),radial-gradient(2px 2px at 22% 39%,#e9d8ff 45%,transparent 55%),radial-gradient(1px 1px at 38% 12%,#fff 45%,transparent 55%),radial-gradient(2px 2px at 52% 28%,#e9d8ff 45%,transparent 55%),radial-gradient(1px 1px at 68% 17%,#fff 45%,transparent 55%),radial-gradient(2px 2px at 82% 34%,#e9d8ff 45%,transparent 55%),radial-gradient(1px 1px at 94% 12%,#fff 45%,transparent 55%);opacity:.7;animation:twinkle 5s ease-in-out infinite alternate}
-.moon{position:absolute;top:13%;right:17%;width:52px;height:52px;border-radius:50%;background:#eee4ff;box-shadow:0 0 22px #d8b4fe,0 0 70px #a855f766}
-.cloud{position:absolute;width:96px;height:24px;background:#594174;box-shadow:24px -18px 0 -5px #594174,54px -9px 0 #594174,78px 4px 0 -3px #594174;opacity:.62;animation:drift 42s linear infinite}
+.world-scene{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:linear-gradient(180deg,#51366f 0%,#d77883 43%,#f6a76b 66%,#324f68 100%)}
+.world-scene::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 22% 28%,#ffe5a866 0,transparent 39%),linear-gradient(180deg,#28194022 0%,transparent 58%,#142e4666 100%);animation:light-breathe 9s ease-in-out infinite alternate}
+.sun-rays{position:absolute;top:-37vw;left:-21vw;width:92vw;height:92vw;border-radius:50%;background:repeating-conic-gradient(from 0deg at 50% 50%,transparent 0deg 8deg,#fff2ca1c 8deg 10deg,transparent 10deg 18deg);mask-image:radial-gradient(circle,#000 0 8%,transparent 68%);animation:ray-turn 100s linear infinite}
+.sun{position:absolute;top:14%;left:17%;width:clamp(68px,8vw,104px);aspect-ratio:1;border-radius:50%;background:linear-gradient(145deg,#fff7b2 0%,#ffd05e 54%,#ff9b55 100%);box-shadow:0 0 28px 8px #ffd76c99,0 0 100px 44px #ffb45a66,0 0 190px 90px #ff8b6b33;animation:sun-glow 6s ease-in-out infinite alternate}
+.cloud{position:absolute;width:96px;height:24px;border-radius:20px;background:#ffe1d0;box-shadow:24px -18px 0 -5px #ffe1d0,54px -9px 0 #ffe1d0,78px 4px 0 -3px #ffe1d0;opacity:.38;animation:drift 42s linear infinite}
 .cloud-one{top:25%;left:-150px}
-.cloud-two{top:39%;left:-260px;transform:scale(.7);animation-delay:-21s;animation-duration:56s;opacity:.4}
-.far-hills{position:absolute;right:0;bottom:12vh;left:0;height:24vh;background:#21142f;clip-path:polygon(0 58%,9% 58%,9% 37%,17% 37%,17% 53%,29% 53%,29% 24%,37% 24%,37% 44%,49% 44%,49% 12%,58% 12%,58% 40%,72% 40%,72% 25%,81% 25%,81% 48%,91% 48%,91% 32%,100% 32%,100% 100%,0 100%);opacity:.88}
-.voxel-ground{position:absolute;right:0;bottom:0;left:0;height:23vh;min-height:120px;background-color:#493024;background-image:linear-gradient(90deg,#0002 1px,transparent 1px),linear-gradient(#0002 1px,transparent 1px),linear-gradient(135deg,#75503b66 25%,transparent 25%,transparent 75%,#271b2166 75%);background-size:48px 48px,48px 48px,96px 96px;clip-path:polygon(0 17%,12% 17%,12% 7%,26% 7%,26% 17%,40% 17%,40% 0,55% 0,55% 12%,69% 12%,69% 5%,84% 5%,84% 17%,100% 17%,100% 100%,0 100%);animation:ground-shift 18s ease-in-out infinite alternate}
-.grass-line{position:absolute;inset:0 0 auto;height:12px;background:#93718a;box-shadow:0 5px 0 #644638}
-@keyframes twinkle{to{opacity:.35}}
+.cloud-two{top:39%;left:-260px;transform:scale(.7);animation-delay:-21s;animation-duration:56s;opacity:.28}
+.far-hills{position:absolute;right:0;bottom:26vh;left:0;height:23vh;background:linear-gradient(180deg,#66546f 0%,#39445a 100%);clip-path:polygon(0 58%,9% 58%,9% 37%,17% 37%,17% 53%,29% 53%,29% 24%,37% 24%,37% 44%,49% 44%,49% 12%,58% 12%,58% 40%,72% 40%,72% 25%,81% 25%,81% 48%,91% 48%,91% 32%,100% 32%,100% 100%,0 100%);opacity:.86}
+.water{position:absolute;right:0;bottom:12vh;left:0;height:22vh;clip-path:polygon(0 14%,17% 8%,34% 15%,51% 6%,69% 13%,85% 7%,100% 14%,100% 100%,0 100%);background:linear-gradient(180deg,#55c5c2 0%,#2998ad 36%,#286b8a 100%);overflow:hidden}
+.water::before{content:"";position:absolute;inset:16% -30%;background:repeating-linear-gradient(0deg,transparent 0 13px,#d5fff344 14px 16px,transparent 17px 30px);transform:skewY(-3deg);animation:ripple 8s ease-in-out infinite alternate}
+.water::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 21% 14%,#fff8d966 0,transparent 33%),linear-gradient(180deg,#fff8d222,transparent 40%);animation:water-shimmer 5s ease-in-out infinite alternate}
+.voxel-ground{position:absolute;right:0;bottom:0;left:0;height:25vh;min-height:136px;background-color:#67472e;background-image:linear-gradient(180deg,#8fd17c 0 9px,#b77749 10px,#0000 25%),linear-gradient(90deg,#241a2030 1px,transparent 1px),linear-gradient(#241a2030 1px,transparent 1px),linear-gradient(135deg,#d39a5a44 25%,transparent 25%,transparent 75%,#35282455 75%),linear-gradient(180deg,#9a6842 0%,#67472e 45%,#352b32 100%);background-size:auto,48px 48px,48px 48px,96px 96px,auto;background-blend-mode:normal,multiply,multiply,normal,normal;clip-path:polygon(0 20%,12% 20%,12% 10%,25% 10%,25% 19%,38% 19%,38% 4%,52% 4%,52% 17%,67% 17%,67% 9%,83% 9%,83% 21%,100% 21%,100% 100%,0 100%);animation:ground-shift 18s ease-in-out infinite alternate}
+.grass-line{position:absolute;inset:13% 0 auto;height:6px;background:linear-gradient(90deg,#9be58b,#d5e97d 22%,#81d785 48%,#d4df78 73%,#8dde85);box-shadow:0 4px 0 #537d4e88}
+@keyframes light-breathe{to{opacity:.55}}
+@keyframes ray-turn{to{transform:rotate(360deg)}}
+@keyframes sun-glow{to{filter:brightness(1.1);box-shadow:0 0 40px 12px #ffd76cba,0 0 125px 56px #ffb45a88,0 0 220px 110px #ff8b6b44}}
 @keyframes drift{to{transform:translateX(calc(100vw + 420px))}}
+@keyframes ripple{to{transform:translateX(30px) skewY(-3deg)}}
+@keyframes water-shimmer{to{opacity:.6}}
 @keyframes ground-shift{to{filter:brightness(1.12)}}
 a{color:var(--b)}
 header{position:sticky;top:0;backdrop-filter:blur(12px);background:rgba(8,6,16,.7);border-bottom:1px solid rgba(255,255,255,.08);z-index:10}
@@ -23,6 +31,9 @@ nav ul a{color:var(--muted);text-decoration:none;position:relative;transition:co
 nav ul a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:linear-gradient(90deg,var(--a),var(--b));transition:width .3s}
 nav ul a:hover,nav ul a.active{color:var(--text)}
 nav ul a:hover::after,nav ul a.active::after{width:100%}
+nav ul a.github-nav-btn{padding:.45rem .85rem;border:1px solid #d8b4fe66;border-radius:999px;background:linear-gradient(135deg,#a855f744,#d8b4fe22);color:var(--text);font-size:.9rem;white-space:nowrap}
+nav ul a.github-nav-btn::after{display:none}
+nav ul a.github-nav-btn:hover{border-color:var(--b);box-shadow:0 0 18px #a855f755;color:#fff}
 main{position:relative;z-index:1;max-width:960px;margin:auto;padding:2rem 1rem 4rem}
 .hero{text-align:center;padding:5rem 0 3rem}
 .hero h1{font-size:clamp(2.4rem,7vw,4.2rem);margin:.2rem 0;line-height:1.1}
@@ -37,6 +48,12 @@ h2{font-size:1.8rem;margin:3rem 0 1rem}
 .card{background:rgba(21,16,32,.9);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:1.4rem;transition:transform .3s,border-color .3s,box-shadow .3s}
 .card:hover{transform:translateY(-6px);border-color:var(--a);box-shadow:0 14px 35px rgba(124,92,255,.25)}
 .card h3{margin-top:0}
+.project-link{color:var(--text);text-decoration:none;transition:color .2s}
+.project-link:hover{color:var(--b)}
+.project-detail{max-width:44rem;margin:4rem auto 8rem;padding:clamp(1.5rem,5vw,3rem);background:rgba(21,16,32,.88);border:1px solid rgba(255,255,255,.12);border-radius:24px;box-shadow:0 20px 60px #130e2755}
+.project-detail h1{font-size:clamp(2.2rem,7vw,3.5rem);line-height:1.1;margin:.5rem 0 1rem}
+.project-detail p{color:var(--muted);font-size:1.1rem}
+.back-link{display:inline-block;margin-bottom:1.5rem}
 .project-heading{display:flex;align-items:center;justify-content:space-between;gap:.75rem}
 .project-heading h3{margin:0}
 .status{display:inline-block;border-radius:99px;padding:.2rem .65rem;font-size:.72rem;line-height:1.5;white-space:nowrap}
