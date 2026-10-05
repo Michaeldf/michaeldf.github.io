@@ -37,6 +37,11 @@ h2{font-size:1.8rem;margin:3rem 0 1rem}
 .card{background:rgba(21,16,32,.9);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:1.4rem;transition:transform .3s,border-color .3s,box-shadow .3s}
 .card:hover{transform:translateY(-6px);border-color:var(--a);box-shadow:0 14px 35px rgba(124,92,255,.25)}
 .card h3{margin-top:0}
+.project-heading{display:flex;align-items:center;justify-content:space-between;gap:.75rem}
+.project-heading h3{margin:0}
+.status{display:inline-block;border-radius:99px;padding:.2rem .65rem;font-size:.72rem;line-height:1.5;white-space:nowrap}
+.status-live{background:#174a38;color:#a7f3d0}
+.status-private{background:rgba(168,85,247,.2);color:#e9d5ff}
 .tag{display:inline-block;background:rgba(124,92,255,.18);color:#c9bfff;border-radius:99px;padding:.1rem .8rem;font-size:.8rem;margin:.15rem}
 .timeline{border-left:2px solid rgba(124,92,255,.5);padding-left:1.4rem;margin-left:.4rem}
 .job{margin-bottom:1.6rem;position:relative}
